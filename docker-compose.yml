@@ -10,5 +10,51 @@ services:
     volumes:
       - cassandra-data:/var/lib/cassandra
 
+  mongo:
+    image: mongo:7
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+  neo4j:
+    image: neo4j:5
+    container_name: neo4j
+    ports:
+      - "7474:7474"   # web browser
+      - "7687:7687"   # bolt
+    environment:
+      NEO4J_AUTH: neo4j/password1234
+    volumes:
+      - neo4j-data:/data
+
+  influxdb:
+    image: influxdb:2.7
+    container_name: influxdb
+    ports:
+      - "8086:8086"   # web UI
+    environment:
+      DOCKER_INFLUXDB_INIT_MODE: setup
+      DOCKER_INFLUXDB_INIT_USERNAME: admin
+      DOCKER_INFLUXDB_INIT_PASSWORD: password1234
+      DOCKER_INFLUXDB_INIT_ORG: deusto
+      DOCKER_INFLUXDB_INIT_BUCKET: test
+      DOCKER_INFLUXDB_INIT_ADMIN_TOKEN: deusto-token
+    volumes:
+      - influxdb-data:/var/lib/influxdb2
+
+  influxdb1:            # InfluxDB 1.x (InfluxQL and the /query API)
+    image: influxdb:1.8
+    container_name: influxdb1
+    ports:
+      - "8087:8086"
+    volumes:
+      - influxdb1-data:/var/lib/influxdb
+
 volumes:
   cassandra-data:
+  mongo-data:
+  neo4j-data:
+  influxdb-data:
+  influxdb1-data:

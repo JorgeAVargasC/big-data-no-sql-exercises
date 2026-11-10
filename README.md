@@ -1,11 +1,16 @@
-# Cassandra con Docker
+# Bases NoSQL con Docker
 
 ```bash
-docker compose up -d                  # arrancar
-docker compose logs -f                # esperar "Starting listening for CQL clients"
-docker exec -it cassandra cqlsh       # abrir la shell CQL
-docker compose down                   # parar (los datos se conservan)
-docker compose down -v                # parar y borrar los datos
+docker compose up -d              # start all
+docker compose up -d mongo        # start only one (cassandra | mongo | neo4j | influxdb | influxdb1)
+docker compose down               # stop (data is kept)
+docker compose down -v            # stop and delete data
 ```
 
-Si `cqlsh` da `Connection refused`, Cassandra todavía está arrancando: espera un poco.
+| Base | Terminal | Web | Usuario / contraseña |
+|---|---|---|---|
+| Cassandra | `./terminals/cassandra.sh` | — | — |
+| MongoDB | `./terminals/mongo.sh` | — | — |
+| Neo4j | `./terminals/neo4j.sh` | http://localhost:7474 | neo4j / password1234 |
+| InfluxDB | `./terminals/influxdb2.sh` (bash con `influx` ya configurado; org `deusto`) | http://localhost:8086 | admin / password1234 |
+| InfluxDB 1.x | `./terminals/influxdb1.sh` | API en http://localhost:8087 | — |
