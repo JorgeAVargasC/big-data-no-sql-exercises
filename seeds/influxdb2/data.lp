@@ -1,0 +1,10 @@
+temperature,location=living_room value=23.5
+temperature,location=kitchen value=25.0
+temperature,location=bedroom value=21.8
+temperature,location=garden value=19.2
+temperature,location=bathroom value=24.1
+temperature,location=office value=22.4
+temperature,location=garage value=16.7
+temperature,location=hallway value=20.3
+temperature,location=attic value=27.9
+temperature,location=basement value=15.6

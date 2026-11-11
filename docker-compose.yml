@@ -8,7 +8,7 @@ services:
       MAX_HEAP_SIZE: 512M
       HEAP_NEWSIZE: 128M
     volumes:
-      - cassandra-data:/var/lib/cassandra
+      - ./data/cassandra:/var/lib/cassandra
 
   mongo:
     image: mongo:7
@@ -16,7 +16,7 @@ services:
     ports:
       - "27017:27017"
     volumes:
-      - mongo-data:/data/db
+      - mongo-data:/data/db   # named volume: MongoDB fails on Windows bind mounts
 
   neo4j:
     image: neo4j:5
@@ -27,7 +27,7 @@ services:
     environment:
       NEO4J_AUTH: neo4j/password1234
     volumes:
-      - neo4j-data:/data
+      - ./data/neo4j:/data
 
   influxdb:
     image: influxdb:2.7
@@ -42,7 +42,7 @@ services:
       DOCKER_INFLUXDB_INIT_BUCKET: test
       DOCKER_INFLUXDB_INIT_ADMIN_TOKEN: deusto-token
     volumes:
-      - influxdb-data:/var/lib/influxdb2
+      - ./data/influxdb2:/var/lib/influxdb2
 
   influxdb1:            # InfluxDB 1.x (InfluxQL and the /query API)
     image: influxdb:1.8
@@ -50,11 +50,7 @@ services:
     ports:
       - "8087:8086"
     volumes:
-      - influxdb1-data:/var/lib/influxdb
+      - ./data/influxdb1:/var/lib/influxdb
 
 volumes:
-  cassandra-data:
   mongo-data:
-  neo4j-data:
-  influxdb-data:
-  influxdb1-data:
