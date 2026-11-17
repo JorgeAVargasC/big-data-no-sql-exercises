@@ -42,15 +42,7 @@ services:
       DOCKER_INFLUXDB_INIT_BUCKET: test
       DOCKER_INFLUXDB_INIT_ADMIN_TOKEN: deusto-token
     volumes:
-      - ./data/influxdb2:/var/lib/influxdb2
-
-  influxdb1:            # InfluxDB 1.x (InfluxQL and the /query API)
-    image: influxdb:1.8
-    container_name: influxdb1
-    ports:
-      - "8087:8086"
-    volumes:
-      - ./data/influxdb1:/var/lib/influxdb
+      - ./data/influxdb:/var/lib/influxdb2
 
 volumes:
   mongo-data:

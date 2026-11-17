@@ -1,6 +1,6 @@
-# InfluxDB 2.x · CLI y Flux
+# InfluxDB · CLI y Flux
 
-Terminal: `./terminals/influxdb2.sh`
+Terminal: `./terminals/influxdb.sh`
 
 > La terminal abre bash dentro del contenedor, con `influx` ya autenticado. (+) He añadido `--org myorg` a las consultas: sin él, `influx` busca el bucket en la organización por defecto del contenedor (`deusto`) y no lo encuentra.
 
